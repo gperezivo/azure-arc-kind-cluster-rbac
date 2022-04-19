@@ -278,7 +278,7 @@ subjects:
 
 ## Connect to your cluster from remote location
 ```bash
-az connectedk8s proxy -n gperezivo-kind-arc -g azure-arc-rg
+az connectedk8s proxy --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME
 ```
 ![img/kubectl-proxy.png](img/kubectl-proxy.png)
 
