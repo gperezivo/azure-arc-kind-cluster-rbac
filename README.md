@@ -214,7 +214,7 @@ After save that role definition on `acessCheck.json` file, we can create the ser
 
 ## Connect to your cluster
 
-In order to connect using kubectl form a remote location, you need to enable the `cluster-connect` feature: 
+In order to connect using kubectl form a remote location, you need to enable the [`cluster-connect`](https://docs.microsoft.com/en-us/azure/azure-arc/kubernetes/cluster-connect) feature: 
 ```bash
 az connectedk8s enable-features --features cluster-connect -n $CLUSTER_NAME -g $RESOURCE_GROUP
 ```
