@@ -25,7 +25,7 @@
 
 Create `variables.sh` file on your repository root directory.
 
-_If you fork this repository `variables.sh` are included in .gitignore file_
+_If you fork this repository `variables.sh` is included in .gitignore file_
 
 ```bash
 #!/bin/bash
@@ -171,7 +171,7 @@ First of all we need to define a custom role to check if the user making the req
 ```
 
 
-After save that role definition on `acessCheck.json` file, we can create the service principal with the following script:
+After saving that role definition on `acessCheck.json` file, we can create the service principal with the following script:
 
 
 ```bash
@@ -220,7 +220,7 @@ az connectedk8s enable-features --features cluster-connect -n $CLUSTER_NAME -g $
 ```
 
 
-At these point you have a cluster connected to Azure Arc with Azure RBAC enabled.
+At this point you have a cluster connected to Azure Arc with Azure RBAC enabled.
 
 You will need create role assignments for your AAD users or groups.
 Check the [Build-in roles](https://docs.microsoft.com/en-us/azure/azure-arc/kubernetes/azure-rbac#built-in-roles).
@@ -234,7 +234,7 @@ CLUSTER_ID=$(az connectedk8s show --resource-group $RESOURCE_GROUP --name $CLUST
 az role assignment create --role "Azure Arc Kubernetes Writer" --assignee $USER_ID --scope $CLUSTER_ID
 ```
 
-After create the role assignment, we need to create Kubernetes RBAC assignment to grant permissions on the namespace in the cluster.
+After creating the role assignment, we need to create Kubernetes RBAC assignment to grant permissions on the namespace in the cluster.
 
 ```yaml
 kind: Role
