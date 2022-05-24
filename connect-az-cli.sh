@@ -1,5 +1,5 @@
 #!/bin/bash
-. ./variables.sh
+source ./variables.sh
 az logout
 az login --output none
 az account set --subscription $SUBSCRIPTION_ID --output none

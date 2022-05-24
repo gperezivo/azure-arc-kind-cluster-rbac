@@ -1,5 +1,5 @@
 #!/bin/bash
-. ./variables.sh
+source ./variables.sh
 #https://docs.microsoft.com/en-us/azure/azure-arc/kubernetes/azure-rbac
 
 #Create a server application
