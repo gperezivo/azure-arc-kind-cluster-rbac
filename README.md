@@ -29,6 +29,11 @@ _If you fork this repository `variables.sh` is included in .gitignore file_
 
 ```bash
 #!/bin/bash
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
 #CLUSTER CONFIGURATION
 TENANT_ID=
 SUBSCRIPTION_ID=
@@ -42,6 +47,12 @@ LOCATION=
 NAMESPACE=
 USER_ID=
 GROUP_ID=
+
+#GitOps Configuration
+GIT_REPO="https://github.com/<your-user>/<your-reponame>"
+GIT_BRANCH=main
+GIT_USER=<your-git-user>
+GIT_PASSWORD=<Create a personal Access Token>
 ```
 
 and grant execution permissions to `variables.sh` file:
@@ -287,13 +298,5 @@ az connectedk8s proxy --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME
 ![img/kubectl-test.png](img/kubectl-test.png)
 ## Delete resources
 
-```bash
-az role assignment delete --role $ROLE_ID --assignee $SERVER_APP_ID
+Just run `delete-resources.sh` script to delete all resources created by this tutorial.
 
-az connectedk8s delete --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME
-az ad sp delete --id $SERVER_APP_ID
-
-az role definition delete --name "Read authorization" --custom-role-only
-
-kind delete cluster --name $CLUSTER_NAME
-```

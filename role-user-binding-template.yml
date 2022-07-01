@@ -25,4 +25,8 @@ roleRef:
 subjects:
 - kind: User
   namespace: $NAMESPACE
-  name: $USER_ID
+  name: 8640823c-1151-41f1-bf15-361428addd52
+- kind: User
+  namespace: $NAMESPACE
+  name: 2eabdcbe-b855-4e88-8c11-500d00a39d8c
+  
