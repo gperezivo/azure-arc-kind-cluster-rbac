@@ -16,6 +16,9 @@
 - Install [Kind](https://kind.sigs.k8s.io)
 - Install [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
   - Install `connectedk8s` extension (version 1.2.0 or later)
+  - Install `k8s-extensions` extension (version 1.0.0 or later)
+  - Install `customlocation` extension (version 0.1.3 or later)
+  - 
 - An Azure tenant with:
   - Permissions to grant _"Sign in and read user profile"_ API permissions to an application (or you can convince your tenant admin to do it)
   - Permission to create a resource group or Contributor role assignment to an resource group

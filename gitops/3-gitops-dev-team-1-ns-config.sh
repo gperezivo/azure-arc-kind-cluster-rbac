@@ -1,5 +1,4 @@
 #!/bin/bash
-source ../variables.sh
 
 echo "Creating flux configuration for dev-team-1 namespace"
 az k8s-configuration flux create \

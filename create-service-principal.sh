@@ -2,12 +2,12 @@
 source ./variables.sh
 #https://docs.microsoft.com/en-us/azure/azure-arc/kubernetes/azure-rbac
 SERVER_APP_NAME="${CLUSTER_NAME}Server"
-SERVER_APP_ID=$(az ad app list --display-name ${SERVER_APP_NAME} --query '[].appId' -o tsv)
+SERVER_APP_ID=$(az ad app list --identifier-uri "api://$TENANT_ID/ARC-KIND-CONNECTED-$CLUSTER_NAME" --query '[].appId' -o tsv)
 
 ## check if server app exists
 if [ -z "$SERVER_APP_ID" ]; then
     echo -e "Server app does not exist"
-    SERVER_APP_ID=$(az ad app create --display-name $SERVER_APP_NAME --identifier-uris "api://$TENANT_ID/ARC-KIND-CONNECTED" --query appId -o tsv)
+    SERVER_APP_ID=$(az ad app create --display-name $SERVER_APP_NAME --identifier-uris "api://$TENANT_ID/ARC-KIND-CONNECTED-$CLUSTER_NAME" --query appId -o tsv)
     az ad app update --id "${SERVER_APP_ID}" --set groupMembershipClaims=All
     az ad sp create --id "${SERVER_APP_ID}"
     echo -e "${GREEN}Server app created with id: $SERVER_APP_ID ${NC}"

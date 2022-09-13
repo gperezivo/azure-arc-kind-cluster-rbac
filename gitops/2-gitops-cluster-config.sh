@@ -1,5 +1,4 @@
 #!/bin/bash
-source ../variables.sh
 
 echo "Creating a new GitOps connection with $GIT_REPO"
 az k8s-configuration flux create \
@@ -8,8 +7,6 @@ az k8s-configuration flux create \
    --namespace cluster-config \
    --resource-group $RESOURCE_GROUP \
    -u $GIT_REPO \
-   --https-user $GIT_USER \
-   --https-key $GIT_PASSWORD \
    --scope cluster \
    --cluster-type connectedClusters \
    --branch $GIT_BRANCH \
