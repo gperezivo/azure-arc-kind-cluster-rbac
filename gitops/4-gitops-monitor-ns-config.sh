@@ -1,5 +1,5 @@
 #!/bin/bash
-
+source ../variables.sh
 echo "Creating flux configuration for monitor namespace"
 az k8s-configuration flux create \
     --name monitor-config \

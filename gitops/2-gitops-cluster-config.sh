@@ -1,5 +1,5 @@
 #!/bin/bash
-
+source ../variables.sh
 echo "Creating a new GitOps connection with $GIT_REPO"
 az k8s-configuration flux create \
    --name cluster-config \
