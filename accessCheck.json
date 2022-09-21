@@ -1,5 +1,5 @@
 {
-  "Name": "Read authorization",
+  "Name": "Arc $CLUSTER_NAME Read authorization",
   "IsCustom": true,
   "Description": "Read authorization",
   "Actions": ["Microsoft.Authorization/*/read"],
@@ -7,6 +7,6 @@
   "DataActions": [],
   "NotDataActions": [],
   "AssignableScopes": [
-    "/subscriptions/<subscriptionId>"
+    "/subscriptions/$SUBSCRIPTION_ID"
   ]
 }

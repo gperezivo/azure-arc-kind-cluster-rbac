@@ -26,3 +26,6 @@ subjects:
 - kind: User
   namespace: $NAMESPACE
   name: $USER_ID
+- kind: User
+  namespace: $NAMESPACE
+  name: $USER_ID2

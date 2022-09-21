@@ -21,7 +21,7 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: dev-user-full-access
+  name: dev-group-full-access
 subjects:
 - kind: Group
   namespace: $NAMESPACE

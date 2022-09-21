@@ -16,6 +16,9 @@
 - Install [Kind](https://kind.sigs.k8s.io)
 - Install [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
   - Install `connectedk8s` extension (version 1.2.0 or later)
+  - Install `k8s-extensions` extension (version 1.0.0 or later)
+  - Install `customlocation` extension (version 0.1.3 or later)
+  - 
 - An Azure tenant with:
   - Permissions to grant _"Sign in and read user profile"_ API permissions to an application (or you can convince your tenant admin to do it)
   - Permission to create a resource group or Contributor role assignment to an resource group
@@ -29,6 +32,11 @@ _If you fork this repository `variables.sh` is included in .gitignore file_
 
 ```bash
 #!/bin/bash
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
 #CLUSTER CONFIGURATION
 TENANT_ID=
 SUBSCRIPTION_ID=
@@ -42,6 +50,12 @@ LOCATION=
 NAMESPACE=
 USER_ID=
 GROUP_ID=
+
+#GitOps Configuration
+GIT_REPO="https://github.com/<your-user>/<your-reponame>"
+GIT_BRANCH=main
+GIT_USER=<your-git-user>
+GIT_PASSWORD=<Create a personal Access Token>
 ```
 
 and grant execution permissions to `variables.sh` file:
@@ -216,7 +230,9 @@ After saving that role definition on `acessCheck.json` file, we can create the s
 
 In order to connect using kubectl form a remote location, you need to enable the [`cluster-connect`](https://docs.microsoft.com/en-us/azure/azure-arc/kubernetes/cluster-connect) feature: 
 ```bash
-az connectedk8s enable-features --features cluster-connect -n $CLUSTER_NAME -g $RESOURCE_GROUP
+az connectedk8s enable-features --features cluster-connect \
+  -n $CLUSTER_NAME \
+  -g $RESOURCE_GROUP
 ```
 
 
@@ -287,13 +303,5 @@ az connectedk8s proxy --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME
 ![img/kubectl-test.png](img/kubectl-test.png)
 ## Delete resources
 
-```bash
-az role assignment delete --role $ROLE_ID --assignee $SERVER_APP_ID
+Just run `delete-resources.sh` script to delete all resources created by this tutorial.
 
-az connectedk8s delete --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME
-az ad sp delete --id $SERVER_APP_ID
-
-az role definition delete --name "Read authorization" --custom-role-only
-
-kind delete cluster --name $CLUSTER_NAME
-```
